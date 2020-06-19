@@ -9,20 +9,28 @@
     background-color: white;
     border-radius: 5%;
 }
-.active {
 
+.active {
+    background-color: #c5c2c2c7;
+    border-radius: 10px;
 }
+
 .menu-item a{
     text-decoration: none;
     color:black;
     width: 100%;
     height: 100%;
+    padding: 5%;
+}
+
+.menu-item .active a{
+    color: #00adff;
+
 }
 
 .menu-item li {
     display: flex;
-    padding: 5%;
-
+    margin: 5px;
 }
 
 .menu-item li:hover{ 

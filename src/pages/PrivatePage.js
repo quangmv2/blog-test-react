@@ -17,7 +17,7 @@ const PrivatePage = (MyCompoment) => {
         return <div className={styles.body}>
                 <div className={styles.menu}>
 
-                    <Suspense fallback="">
+                    <Suspense fallback={<Loading />} >
                             <Menu />
                     </Suspense>
                 </div>
