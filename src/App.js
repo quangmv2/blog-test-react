@@ -1,25 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Suspense } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
+import routes from './router/router.config';
+import PrivatePage from './pages/PrivatePage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+        <Switch>
+          {
+            routes.map((route) => (
+              <Route key={`path${route.path}`} path={route.path} exact 
+              component={route.isProtected?PrivatePage(()=><route.component title={route.title} />)
+              :()=><Suspense fallback={<div>Loading...</div>}><route.component title={route.title} /></Suspense>} />
+            ))
+          }
+        </Switch>
+    </Router>
   );
 }
 
